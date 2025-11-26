@@ -38,14 +38,15 @@ Make sure you have:
 1. **Clone this repository**
 
    ```bash
-   git clone https://github.com/your-username/terraform-deploy-aws.git
-   cd terraform-deploy-aws
+   git clone https://github.com/Joebaho/Flipkart-Deploy.git
+   cd Flipkart-Deploy
    ```
 
 2. **Initialize Terraform**
 
    ```bash
    terraform init
+   terraform fmt
    ```
 
 3. **Validate & Plan**
