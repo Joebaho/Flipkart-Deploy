@@ -15,6 +15,7 @@ It’s a hands-on DevOps project showing Infrastructure as Code (IaC) and automa
 ├── outputs.tf      # List of all output that can be use 
 ├── user-data.sh     # Set of commands of Nginx and html installation
 ├── deploy.sh    # Deployment script to automate execution  
+├── destroy.sh    # Destroy script to automate destruction
 ```
 
 ---
