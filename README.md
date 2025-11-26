@@ -1,7 +1,6 @@
 # 🚀 Terraform AWS Deployment
 
-This project demonstrates how to **provision and deploy infrastructure on AWS using Terraform** and a **deployment script (`deploy.sh`)**.
-It’s a hands-on DevOps project showing Infrastructure as Code (IaC) and automation.
+This project demonstrates how to **provision, deploy and destroy infrastructure on AWS using Terraform**.  A **deployment script (`deploy.sh`)** and a **destroy script (`destroy.sh`)** are use for the automation process. It’s a hands-on DevOps project showing Infrastructure as Code (IaC) and automation.
 
 ---
 

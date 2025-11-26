@@ -17,6 +17,14 @@ command -v aws >/dev/null 2>&1 || { echo "❌ AWS CLI not installed"; exit 1; }
 echo "🔧 Initializing Terraform..."
 terraform init
 
+# Checking the syntax error and confirm good format
+echo "🔧 Initializing Terraform..."
+terraform fmt
+
+# Validate the good writing of all configuration files
+echo "🔧 Initializing Terraform..."
+terraform validate
+
 # Create plan
 echo "📝 Creating deployment plan..."
 terraform plan -var="environment=$ENVIRONMENT" -var="aws_region=$AWS_REGION" -out=tfplan
