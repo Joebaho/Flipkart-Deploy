@@ -1,5 +1,17 @@
-provider "aws" {
-  region = "us-east-1"
+# Data Sources
+data "aws_ami" "ubuntu_latest" {
+  most_recent = true
+  owners      = ["099720109477"] # Canonical's AWS account ID for Ubuntu AMIs
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-*-*-amd64-server-*"] # Adjust for desired Ubuntu version (e.g., focal, noble)
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
 }
 
 resource "aws_vpc" "main" {
@@ -14,7 +26,7 @@ resource "aws_vpc" "main" {
 resource "aws_subnet" "public_a" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = "10.0.1.0/24"
-  availability_zone       = "us-east-1a"
+  availability_zone       = "us-west-2a"
   map_public_ip_on_launch = true
   tags = {
     Name = "public-subnet-a"
@@ -24,7 +36,7 @@ resource "aws_subnet" "public_a" {
 resource "aws_subnet" "public_b" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = "10.0.2.0/24"
-  availability_zone       = "us-east-1b"
+  availability_zone       = "us-west-2b"
   map_public_ip_on_launch = true
   tags = {
     Name = "public-subnet-b"
@@ -120,11 +132,11 @@ resource "aws_security_group" "alb_sg" {
 }
 
 resource "aws_instance" "web" {
-  count         = 2
-  ami           = "ami-0360c520857e3138f" 
-  instance_type = "t3.micro"
-  key_name      = "keypair"              
-  subnet_id     = count.index == 0 ? aws_subnet.public_a.id : aws_subnet.public_b.id
+  count                  = 2
+  ami                    = data.aws_ami.ubuntu_latest.id
+  instance_type          = var.instance_type
+  key_name               = var.key_name
+  subnet_id              = count.index == 0 ? aws_subnet.public_a.id : aws_subnet.public_b.id
   vpc_security_group_ids = [aws_security_group.ec2_sg.id]
 
   user_data = file("${path.module}/deploy.sh")
@@ -176,12 +188,3 @@ resource "aws_lb_target_group_attachment" "web_attachment" {
   port             = 80
 }
 
-output "public_ips" {
-  description = "Public IPs of the servers"
-  value       = [for instance in aws_instance.web : instance.public_ip]
-}
-
-output "load_balancer_dns" {
-  description = "DNS name of the load balancer"
-  value       = aws_lb.web_lb.dns_name
-}
