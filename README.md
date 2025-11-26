@@ -47,33 +47,18 @@ Make sure you have:
    cd Flipkart-Deploy
    ```
 
-2. **Initialize Terraform**
+2. **Run Deployment Script**
 
    ```bash
-   terraform init
-   terraform fmt
-   ```
-
-3. **Validate & Plan**
-
-   ```bash
-   terraform validate
-   terraform plan
-   ```
-
-4. **Run Deployment Script**
-
-   ```bash
-   chmod +x deploy.sh user-data.sh
-   chmod +x user-data.sh
+   chmod +x deploy.sh
    ./deploy.sh
-   ./user-data.sh
    ```
 
-5. **Destroy Infrastructure (when done)**
+3. **Destroy Infrastructure (when done)**
 
-   ```bash
-   terraform destroy -auto-approve
+  ```bash
+   chmod +x destroy.sh
+   ./destroy.sh
    ```
 
 ---
