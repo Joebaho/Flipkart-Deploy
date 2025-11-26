@@ -139,7 +139,7 @@ resource "aws_instance" "web" {
   subnet_id              = count.index == 0 ? aws_subnet.public_a.id : aws_subnet.public_b.id
   vpc_security_group_ids = [aws_security_group.ec2_sg.id]
 
-  user_data = file("${path.module}/deploy.sh")
+  user_data = file("${path.module}/user-data.sh")
 
   tags = {
     Name = "WebServer-${count.index + 1}"

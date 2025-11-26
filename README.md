@@ -8,7 +8,12 @@ It’s a hands-on DevOps project showing Infrastructure as Code (IaC) and automa
 ## 📂 Project Structure
 
 ```
-├── main.tf      # Terraform configuration for AWS resources  
+├── main.tf      # Terraform configuration for AWS resources 
+├── providers.tf # AWS provider configuration
+├── variables.tf  # Define all input and changable arguments
+├── terraform.tfvars  # Value of all differents variables
+├── outputs.tf      # List of all output that can be use 
+├── user-data.sh     # Set of commands of Nginx and html installation
 ├── deploy.sh    # Deployment script to automate execution  
 ```
 
@@ -59,8 +64,10 @@ Make sure you have:
 4. **Run Deployment Script**
 
    ```bash
-   chmod +x deploy.sh
+   chmod +x deploy.sh user-data.sh
+   chmod +x user-data.sh
    ./deploy.sh
+   ./user-data.sh
    ```
 
 5. **Destroy Infrastructure (when done)**
