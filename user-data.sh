@@ -22,10 +22,10 @@ sudo cat > /var/www/html/index.html << EOF
 <body>
     <div class="container">
         <div class="header">
-            <h1>🚀 AWS & Terraform & Nginx Deployment</h1>
+            <h1> AWS & Terraform & Nginx Deployment</h1>
         </div>
         <div class="content">
-            <h2 class="success">✅ Deployment Successful!</h2>
+            <h2 class="success"> <center> Deployment Successful!</h2> </center>
             <p>This application was deployed using:</p>
             <ul>
                 <li><strong>NGINX</strong> - Web Page</li>
