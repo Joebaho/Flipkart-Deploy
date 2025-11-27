@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#variables
+AWS_REGION=${AWS_REGION:-us-west-2}
+
 # Update and install Nginx
 sudo apt update
 sudo apt install -y nginx
