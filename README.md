@@ -54,12 +54,39 @@ Make sure you have:
    ./deploy.sh
    ```
 
+The process will display following images:
+
+Terraform init: 
+![Terraform init](images/init.png)
+
+Terraform fmt and validate:
+![Terraform validate](images/validate.png)
+
+Terraform plan:
+![Terraformy plan](images/plan.png)
+
+Terraform apply:
+![Terraform apply](images/apply.png)
+
+Terraform output:
+![Terraform output](images/outputs.png)
+
+After copy the ELb dns in the output section you can go paste that in a new window on the browser and the web page will display.
+
+![Web Page](images/webpage.png)
+
 3. **Destroy Infrastructure (when done)**
 
   ```bash
    chmod +x destroy.sh
    ./destroy.sh
-   ```
+  ```
+
+After typing or pasting the command you will get images
+
+![Terraformy destroy 1](images/destroy1.png)
+![Terraform destroy 2](images/destroy2.png)
+
 
 ---
 
